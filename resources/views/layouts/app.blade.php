@@ -44,7 +44,7 @@
 
             <div class="col">
                 <div class="row">
-                    <div class="col-lg-7 input-group mb-3">
+                    <div class="col-lg input-group mb-3">
                         <input type="text" class="form-control text-center form-control-sm"
                                placeholder="Autor / Tytuł / ISBN" aria-label="Recipient's username"
                                aria-describedby="basic-addon2">
@@ -53,7 +53,7 @@
                         </div>
                     </div>
 
-                    <div class="col">
+                    <div class="col-lg-2">
                         <ul class="ml-auto navbar-nav">
                             <!-- Authentication Links -->
                             @guest
@@ -67,7 +67,7 @@
                             @else
 
                                 <li class="nav-item dropdown">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle text-dark text-right" href="#" role="button"
                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         {{ Auth::user()->name }} <span class="caret"></span>
                                     </a>
@@ -93,15 +93,15 @@
                 <div class="row">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="{{ url('/') }}">Główna</a>
+                            <a class="nav-link text-dark" href="{{ url('#') }}">Główna</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="{{ url('/') }}">Znajomi</a>
+                            <a class="nav-link text-dark" href="{{ url('#') }}">Znajomi</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="{{ url('/') }}">Biblioteka</a>
+                            <a class="nav-link text-dark" href="{{ url('#') }}">Biblioteka</a>
                         </li>
 
                         <li class="nav-item dropdown">
