@@ -1,6 +1,52 @@
 .py-4{
 }
 
+html, body{
+    background-color: #fff;
+    color: #636b6f;
+    font-family: 'Raleway', sans-serif!important;
+    font-weight: 100;
+    height: 100vh;
+    margin: 0;
+}
+
+.stickySidebar{
+    position: fixed;
+    top: 127px;
+    right: 1000px;
+    left: 50px;
+}
+
+.sidenav {
+    width: auto;
+    position: fixed;
+    z-index: 1;
+    top: 150px;
+    left: 50px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    display: block;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    color: darkgray;
+}
+
+/* Style page content */
+.main {
+    margin-left: 200px; /* Same as the width of the sidebar */
+    padding: 0px 10px;
+}
+
 .mt-7{
     margin-top: 7rem!important;
 }

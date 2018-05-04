@@ -35,7 +35,7 @@
     <div class="container">
         <nav class="row navbar navbar-expand-lg navbar-dark">
             <div class="col-lg-4">
-                <a class="navbar-brand mb-2" href="{{ url('/') }}">
+                <a class="navbar-brand mb-2" href="{{ url('/home') }}">
                     <div class="logo display-4">
                         <span class="logo font-weight-light h1">prze</span>czytane
                     </div>
@@ -58,11 +58,11 @@
                             <!-- Authentication Links -->
                             @guest
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{__('Login') }}</a>
+                                    <a class="nav-link" href="{{ route('login') }}">{{__('Zaloguj') }}</a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Zarejestruj') }}</a>
                                 </li>
                             @else
 
@@ -73,10 +73,17 @@
                                     </a>
 
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item"
+{{--                                                   href="{{ url('/user') }}">--}}
+                                        href="{{url('/user', ['id' => Auth::user()->name])}}">
+
+                                                   {{ __('Profil') }}
+                                        </a>
+
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            {{ __('Logout') }}
+                                            {{ __('Wyloguj') }}
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST"

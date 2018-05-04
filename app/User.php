@@ -27,5 +27,6 @@ class User extends Authenticatable
         'password', 'remember_token', 'roles_id'
     ];
 
-    protected $primaryKey = 'email';
+    public $primaryKey = 'name';
+    public $incrementing = false;
 }
