@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use phpDocumentor\Reflection\Project;
+use Illuminate\View\View;
+use PHPUnit\Framework\Constraint\IsFalse;
 
 class ProfileController extends Controller
 {
@@ -24,8 +25,9 @@ class ProfileController extends Controller
      */
     public function index()
     {
-//        $user = Auth::user();
-//        return view('user.user', compact('user'));
+        $user = Auth::user();
+
+        return view('user.user', compact('user'));
     }
 
     /**
@@ -44,9 +46,13 @@ class ProfileController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public static function store(Request $request)
     {
-        //
+        $id = $request[trim('userName')];
+
+        DB::table('friends')->insert(['nameFirst' => Auth::user()->name, 'nameSecond' => $id]);
+
+        return redirect()->back();
     }
 
     /**
@@ -57,15 +63,37 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
+        $friendship = 0;
+
         $user = DB::table('users')->where('name', $id)->first();
-//        return view('user.user')->with(compact('user'));
+
+        if(Auth::user()->name != $id){
+            $ffriend = DB::table('friends')
+                ->select('*')
+                ->where('nameSecond', Auth::user()->name)
+                ->orWhere('nameFirst', Auth::user()->name)
+                ->get();
+
+            if ($ffriend->contains('nameFirst',$id)){
+                $friendship = 0;
+            }
+            elseif ($ffriend->contains('nameSecond',$id)){
+                $friendship = 0;
+            }
+            else{
+                $friendship = 1;
+            }
+        }
+
+
         if ($user == null){
             abort(404);
         }
         else{
-            return view('user.user', compact('user'));
+            return view('user.user', compact(['user', 'friendship']));
+//            return View::creator('user.user', compact(['user', 'friendship']));
         }
-//    dd($user);
+
     }
 
     public function about($id)

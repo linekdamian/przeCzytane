@@ -12,7 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+//    return view('welcome');
+    return view('home');
 });
 
 Auth::routes();
@@ -25,22 +26,5 @@ Route::get('/user', 'User\ProfileController@index');
 
 Route::get('/user/{id}', 'User\ProfileController@show');
 Route::get('/user/{id}/about', 'User\ProfileController@about')->name('about');
-//Route::get('/about', function (){
-//    $users = DB::table('users')->get();
-//
-////    return $users;
-//    return view('user.user', compact('users'));
-//});
+Route::post('user/', 'User\ProfileController@store')->name('addFriend');
 
-//Route::get('/about/{user}', function ($id){
-//    $users = DB::table('users')->where('name', $id)->first();
-//
-//    if($users == null){
-//        return('error that page doesnt exist');
-//    }
-//    else{
-//        //    return $users;
-//        return view('user.user')->with(compact('users'));
-//    }
-//
-//});

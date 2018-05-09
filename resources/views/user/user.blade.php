@@ -3,7 +3,7 @@
 @section('content')
     <div class="container" style="height: 10000px">
 
-        <nav class="sidenav bg-dark p-3">
+        <nav class="bg-dark p-3 position-fixed">
             <div class="navbar-nav">
                 <a class="btn btn-dark text-white "
                    href="{{ url('/user', ['id' => $user->name]) }}">{{__('Aktywność') }}</a>
@@ -25,14 +25,36 @@
         <div class="main">
 
             <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="h2 font-weight-light">
+                            {{ $user->name }} <br>
+                            <span class="small text-secondary">
+                            {{ $user->email }}
+                        </span>
 
-                <div class="h2 font-weight-light">
-                    {{ $user->name }} <br>
-                    <span class="small text-secondary">
-                    {{ $user->email }}
-                </span>
+                        </div>
+                    </div>
 
+                    @if($friendship)
+                        <div class="col">
+
+                            <a class="float-right btn btn-dark btn-lg" href=""
+                               onclick="event.preventDefault();
+                                                     document.getElementById('addFriend-form').submit();">
+                                {{ __('Dodaj do znajomych') }}
+                            </a>
+
+                            <form id="addFriend-form" action="{{ route('addFriend') }}" method="POST"
+                                  style="display: none;">
+                                <input type="hidden" name="userName" value="{{ $user->name }}">
+                                @csrf
+                            </form>
+                        </div>
+                    @endif
                 </div>
+
+                {{--{{ route('addFriend', ['id' => $user->name]) }}--}}
 
                 @yield('userProfileContent')
 

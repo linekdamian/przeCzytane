@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
@@ -29,4 +31,27 @@ class User extends Authenticatable
 
     public $primaryKey = 'name';
     public $incrementing = false;
+
+    public static function checkFriendship($id){
+
+        if(Auth::user()->name != $id){
+            $ffriend = DB::table('friends')
+                ->select('*')
+                ->where('nameSecond', Auth::user()->name)
+                ->orWhere('nameFirst', Auth::user()->name)
+                ->get();
+
+            if ($ffriend->contains('nameFirst',$id)){
+                $friendship = 0;
+            }
+            elseif ($ffriend->contains('nameSecond',$id)){
+                $friendship = 0;
+            }
+            else{
+                $friendship = 1;
+            }
+
+            return $friendship;
+        }
+    }
 }
