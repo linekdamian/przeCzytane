@@ -61,7 +61,7 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function about($id)
     {
         $friendship = 0;
 
@@ -90,20 +90,50 @@ class ProfileController extends Controller
             abort(404);
         }
         else{
-            return view('user.user', compact(['user', 'friendship']));
+            return view('user.about', compact(['user', 'friendship']));
 //            return View::creator('user.user', compact(['user', 'friendship']));
         }
 
     }
 
-    public function about($id)
+    public function activity($id)
     {
         $user = DB::table('users')->where('name', $id)->first();
         if ($user == null){
             abort(404);
         }
         else{
-            return view('user.about', compact('user'));
+            return view('user.activity', compact('user'));
+        }
+    }
+
+    public function ratings($id){
+        $user = DB::table('users')->where('name', $id)->first();
+        if ($user == null){
+            abort(404);
+        }
+        else{
+            return view('user.ratings', compact('user'));
+        }
+    }
+
+    public function toRead($id){
+        $user = DB::table('users')->where('name', $id)->first();
+        if ($user == null){
+            abort(404);
+        }
+        else{
+            return view('user.toRead', compact('user'));
+        }
+    }
+
+    public function friends($id){
+        $user = DB::table('users')->where('name', $id)->first();
+        if ($user == null){
+            abort(404);
+        }
+        else{
+            return view('user.friends', compact('user'));
         }
     }
     /**

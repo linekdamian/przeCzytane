@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'description',
     ];
 
     /**
@@ -32,26 +32,5 @@ class User extends Authenticatable
     public $primaryKey = 'name';
     public $incrementing = false;
 
-    public static function checkFriendship($id){
 
-        if(Auth::user()->name != $id){
-            $ffriend = DB::table('friends')
-                ->select('*')
-                ->where('nameSecond', Auth::user()->name)
-                ->orWhere('nameFirst', Auth::user()->name)
-                ->get();
-
-            if ($ffriend->contains('nameFirst',$id)){
-                $friendship = 0;
-            }
-            elseif ($ffriend->contains('nameSecond',$id)){
-                $friendship = 0;
-            }
-            else{
-                $friendship = 1;
-            }
-
-            return $friendship;
-        }
-    }
 }

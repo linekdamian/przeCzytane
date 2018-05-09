@@ -40,7 +40,7 @@
 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item"
-                                       href="{{url('/user', ['id' => Auth::user()->name])}}">
+                                       href="{{route('about', ['id' => Auth::user()->name])}}">
 
                                         {{ __('Profil') }}
                                     </a>
