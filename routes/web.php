@@ -34,4 +34,4 @@ Route::post('user/', 'User\ProfileController@store')->name('addFriend');
 
 //Routing ADMIN -------------------------
 
-Route::get('admin/', 'Admin\AdminController@index')->name('admin');
+Route::get('/admin', 'Admin\AdminController@index')->name('admin');

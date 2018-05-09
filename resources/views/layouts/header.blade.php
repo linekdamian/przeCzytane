@@ -39,6 +39,15 @@
                                 </a>
 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                                    @if(Auth::user()->roles_id == 1)
+                                    <a class="dropdown-item"
+                                       href="{{route('admin')}}">
+
+                                        {{ __('Admin') }}
+                                    </a>
+                                    @endif
+
                                     <a class="dropdown-item"
                                        href="{{route('about', ['id' => Auth::user()->name])}}">
 
@@ -65,11 +74,11 @@
             <div class="row">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="{{ url('#') }}">Główna</a>
+                        <a class="nav-link text-dark" href="{{ route('home') }}">Główna</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="{{ url('#') }}">Znajomi</a>
+                        <a class="nav-link text-dark" href="{{ route('friends', ['id'=> Auth::user()->name]) }}">Znajomi</a>
                     </li>
 
                     <li class="nav-item">
