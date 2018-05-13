@@ -24,8 +24,9 @@
             @endif
         </div>
 
-        @if(Auth::user()->name == $user->name)
+
         <div class="row">
+            @if(Auth::user()->name == $user->name)
             <div class="col">
                 @if($user->description)
                 {{ $user->description }}
@@ -33,9 +34,14 @@
 
                 @else
                     <small class="text-muted text-right">Dodaj opis</small>
-                    @endif
+                @endif
             </div>
+            @else
+                <div class="col pt-2">
+                    {{ $user->description }}
+                </div>
+            @endif
         </div>
-        @endif
+
     </div>
 @endsection

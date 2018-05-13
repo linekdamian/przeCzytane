@@ -76,15 +76,17 @@
                     <li class="nav-item">
                         <a class="nav-link text-dark" href="{{ route('home') }}">Główna</a>
                     </li>
-
+                    @if(Auth::user())
                     <li class="nav-item">
+
                         <a class="nav-link text-dark" href="{{ route('friends', ['id'=> Auth::user()->name]) }}">Znajomi</a>
+
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link text-dark" href="{{ url('#') }}">Biblioteka</a>
                     </li>
-
+                    @endif
                     <li class="nav-item dropdown">
                         <a class="nav-link text-dark dropdown-toggle" role="button" href="#"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
