@@ -25,9 +25,10 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
+//        $user = Auth::user();
+        $users = DB::table('users')->select('*')->get();
 
-        return view('user.user', compact('user'));
+        return view('user.users', compact('users'));
     }
 
     /**
@@ -128,12 +129,22 @@ class ProfileController extends Controller
     }
 
     public function friends($id){
+
+        $friendo = DB::table('users')
+            ->join('friends', function ($join) {
+                $join->on('name', '=', 'friends.nameFirst')->orOn('name', '=', 'friends.nameSecond');
+            })
+            ->where('nameFirst', $id)
+            ->orWhere('nameSecond', $id)->get();
+
+        $filtruj = $friendo->except('damian');
+
         $user = DB::table('users')->where('name', $id)->first();
         if ($user == null){
             abort(404);
         }
         else{
-            return view('user.friends', compact('user'));
+            return view('user.friends', compact(['user', 'filtruj']));
         }
     }
     /**
