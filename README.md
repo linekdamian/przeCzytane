@@ -16,5 +16,10 @@ How to run this repo:
 php artisan key:generate
 ```
 4.Set the debug option to true in app/config/app.php
+5.Now only remains to migrate and fill database
+    ```
+    php artisan migrate
+    php artisan db:seed
+    ```
 
 # Now it should be working fine
