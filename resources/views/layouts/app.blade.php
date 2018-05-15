@@ -31,15 +31,20 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
+
 <section class="bg-primary sticky-top">
     @include('layouts.header')
 </section>
 
-<main class="py-4">
-    @yield('content')
-</main>
+<section>
+    <main class="py-4 h-100">
+        @yield('content')
+    </main>
+</section>
+
 <section class="bg-secondary">
     @include('layouts.footer')
 </section>
+
 </body>
 </html>

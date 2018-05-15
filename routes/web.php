@@ -35,3 +35,8 @@ Route::post('/user', 'User\ProfileController@store')->name('addFriend');
 //Routing ADMIN -------------------------
 
 Route::get('/admin', 'Admin\AdminController@index')->name('admin');
+
+//Routing BOOK -------------------------
+
+Route::get('/book', 'Book\BookController@index')->name('books');
+Route::get('/book/{id}', 'Book\BookController@book')->name('book');

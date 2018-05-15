@@ -61,7 +61,7 @@ class ProfileController extends Controller
     public function about($id)
     {
         $friendship = 0;
-        $user = $this->findUser($id);
+        $user = $this->getUser($id);
 
         if(Auth::user()->name != $id)
         {
@@ -96,18 +96,18 @@ class ProfileController extends Controller
 
     public function activity($id)
     {
-        $user = $this->findUser($id);
+        $user = $this->getUser($id);
         return view('user.activity', compact('user'));
     }
 
     public function ratings($id)
     {
-        $user = $this->findUser($id);
+        $user = $this->getUser($id);
         return view('user.ratings', compact('user'));
     }
 
     public function toRead($id){
-        $user = $this->findUser($id);
+        $user = $this->getUser($id);
         return view('user.toRead', compact('user'));
     }
 
@@ -121,7 +121,7 @@ class ProfileController extends Controller
             ->where('nameFirst', $id)
             ->orWhere('nameSecond', $id)->get();
 
-        $user = $this->findUser($id);
+        $user = $this->getUser($id);
         return view('user.friends', compact(['user', 'friendo']));
     }
     /**
@@ -162,7 +162,7 @@ class ProfileController extends Controller
      * Protected Function Section
      *
      */
-    protected function findUser($id)
+    protected function getUser($id)
     {
         $user = DB::table('users')->where('name', $id)->first();
 

@@ -16,4 +16,19 @@ class Book extends Model
 
     public $primaryKey = 'isbn';
     public $incrementing = false;
+
+    public function categories()
+    {
+        return $this->hasOne('App\Category');
+    }
+
+    public function publisher()
+    {
+        return $this->hasOne('App\Publisher');
+    }
+
+    public function authors()
+    {
+        return $this->belongsToMany('App\Author');
+    }
 }
