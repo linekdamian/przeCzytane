@@ -10,14 +10,15 @@
 
         <div class="col">
             <div class="row">
-                <div class="col-lg input-group mb-3">
-                    <input type="text" class="form-control text-center form-control-sm"
+                <form method="post" class="col-lg input-group mb-3 w-75" action="{{ route('search') }}">
+                    @csrf
+                    <input id="search" name="search" type="text" class="form-control text-center form-control-sm"
                            placeholder="Autor / Tytuł / ISBN" aria-label="Recipient's username"
                            aria-describedby="basic-addon2">
                     <div class="input-group-append">
-                        <button class="btn btn-warning btn-sm" type="button">Szukaj</button>
+                        <button class="btn btn-warning btn-sm" type="submit">{{ __('Szukaj') }}</button>
                     </div>
-                </div>
+                </form>
 
                 <div class="col-lg-2">
                     <ul class="ml-auto navbar-nav">
@@ -33,7 +34,8 @@
                         @else
 
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-dark text-right" href="#" role="button"
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-dark text-right" href="#"
+                                   role="button"
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
@@ -41,11 +43,11 @@
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
                                     @if(Auth::user()->roles_id == 1)
-                                    <a class="dropdown-item"
-                                       href="{{route('admin')}}">
+                                        <a class="dropdown-item"
+                                           href="{{route('admin')}}">
 
-                                        {{ __('Admin') }}
-                                    </a>
+                                            {{ __('Admin') }}
+                                        </a>
                                     @endif
 
                                     <a class="dropdown-item"
@@ -77,15 +79,15 @@
                         <a class="nav-link text-dark" href="{{ route('home') }}">Główna</a>
                     </li>
                     @if(Auth::user())
-                    <li class="nav-item">
+                        <li class="nav-item">
 
-                        <a class="nav-link text-dark" href="{{ route('friends', ['id'=> Auth::user()->name]) }}">Znajomi</a>
+                            <a class="nav-link text-dark" href="{{ route('friends', ['id'=> Auth::user()->name]) }}">Znajomi</a>
 
-                    </li>
+                        </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="{{ url('#') }}">Biblioteka</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="{{ url('#') }}">Biblioteka</a>
+                        </li>
                     @endif
                     <li class="nav-item dropdown">
                         <a class="nav-link text-dark dropdown-toggle" role="button" href="#"

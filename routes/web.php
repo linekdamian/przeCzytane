@@ -40,3 +40,4 @@ Route::get('/admin', 'Admin\AdminController@index')->name('admin');
 
 Route::get('/book', 'Book\BookController@index')->name('books');
 Route::get('/book/{id}', 'Book\BookController@book')->name('book');
+Route::post('/search', 'Book\SearchController@search')->name('search');
