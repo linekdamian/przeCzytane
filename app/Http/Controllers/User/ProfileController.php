@@ -19,15 +19,13 @@ class ProfileController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Display a listing of the users.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-//        $user = Auth::user();
         $users = DB::table('users')->select('*')->get();
-
         return view('user.users', compact('users'));
     }
 
@@ -42,7 +40,7 @@ class ProfileController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created friendship in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -50,9 +48,7 @@ class ProfileController extends Controller
     public static function store(Request $request)
     {
         $id = $request[trim('userName')];
-
         DB::table('friends')->insert(['nameFirst' => Auth::user()->name, 'nameSecond' => $id]);
-
         return redirect()->back();
     }
 
@@ -65,20 +61,22 @@ class ProfileController extends Controller
     public function about($id)
     {
         $friendship = 0;
+        $user = $this->findUser($id);
 
-        $user = DB::table('users')->where('name', $id)->first();
-
-        if(Auth::user()->name != $id){
+        if(Auth::user()->name != $id)
+        {
             $ffriend = DB::table('friends')
                 ->select('*')
                 ->where('nameSecond', Auth::user()->name)
                 ->orWhere('nameFirst', Auth::user()->name)
                 ->get();
 
-            if ($ffriend->contains('nameFirst',$id)){
+            if ($ffriend->contains('nameFirst',$id))
+            {
                 $friendship = 0;
             }
-            elseif ($ffriend->contains('nameSecond',$id)){
+            elseif ($ffriend->contains('nameSecond',$id))
+            {
                 $friendship = 0;
             }
             else{
@@ -87,65 +85,44 @@ class ProfileController extends Controller
         }
 
 
-        if ($user == null){
+        if ($user == null)
+        {
             abort(404);
         }
         else{
             return view('user.about', compact(['user', 'friendship']));
-//            return View::creator('user.user', compact(['user', 'friendship']));
         }
-
     }
 
     public function activity($id)
     {
-        $user = DB::table('users')->where('name', $id)->first();
-        if ($user == null){
-            abort(404);
-        }
-        else{
-            return view('user.activity', compact('user'));
-        }
+        $user = $this->findUser($id);
+        return view('user.activity', compact('user'));
     }
 
-    public function ratings($id){
-        $user = DB::table('users')->where('name', $id)->first();
-        if ($user == null){
-            abort(404);
-        }
-        else{
-            return view('user.ratings', compact('user'));
-        }
+    public function ratings($id)
+    {
+        $user = $this->findUser($id);
+        return view('user.ratings', compact('user'));
     }
 
     public function toRead($id){
-        $user = DB::table('users')->where('name', $id)->first();
-        if ($user == null){
-            abort(404);
-        }
-        else{
-            return view('user.toRead', compact('user'));
-        }
+        $user = $this->findUser($id);
+        return view('user.toRead', compact('user'));
     }
 
-    public function friends($id){
-
+    public function friends($id)
+    {
         $friendo = DB::table('users')
             ->join('friends', function ($join) {
-                $join->on('name', '=', 'friends.nameFirst')->orOn('name', '=', 'friends.nameSecond');
+                $join->on('name', '=', 'friends.nameFirst')
+                    ->orOn('name', '=', 'friends.nameSecond');
             })
             ->where('nameFirst', $id)
             ->orWhere('nameSecond', $id)->get();
 
-        $filtruj = $friendo->except('damian');
-
-        $user = DB::table('users')->where('name', $id)->first();
-        if ($user == null){
-            abort(404);
-        }
-        else{
-            return view('user.friends', compact(['user', 'filtruj']));
-        }
+        $user = $this->findUser($id);
+        return view('user.friends', compact(['user', 'friendo']));
     }
     /**
      * Show the form for editing the specified resource.
@@ -179,5 +156,22 @@ class ProfileController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Protected Function Section
+     *
+     */
+    protected function findUser($id)
+    {
+        $user = DB::table('users')->where('name', $id)->first();
+
+        if ($user == null)
+        {
+            abort(404);
+        }
+        else{
+            return $user;
+        }
     }
 }

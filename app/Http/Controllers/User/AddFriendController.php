@@ -9,16 +9,14 @@ use Illuminate\Support\Facades\Auth;
 class AddFriendController extends Controller
 {
 
-//    protected $redirectTo = '/home';
-
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-    public function addFriend(Request $request){
+    public function addFriend(Request $request)
+    {
 //        DB:table('friends')->insert(['nameFirst' => Auth::user()->name, 'nameSecond' => $id]);
-
         return redirect()->back();
     }
 }

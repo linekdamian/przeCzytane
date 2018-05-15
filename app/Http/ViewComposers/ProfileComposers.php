@@ -13,8 +13,8 @@ use App\User;
 class ProfileComposers
 {
 
-    public function compose ($view){
+    public function compose ($view)
+    {
 //        $view->with();
     }
-
 }
