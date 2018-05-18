@@ -64,7 +64,7 @@ class UsersController extends Controller
 
     public function index()
     {
-        return view('admin.user-actions.users-home');
+        return view('admin.user-actions.home');
     }
 
     public function delete(Request $request)
@@ -98,7 +98,7 @@ class UsersController extends Controller
             return Redirect::back()->with('danger_message', 'Nie ma takiego użytkownika');
         } elseif ($user->roles_id == 1) {
             return Redirect::back()->with('danger_message', 'Nie możesz edytować konta admina');
-        } else return view('admin.user-actions.edit-user', compact('user'));
+        } else return view('admin.user-actions.edit', compact('user'));
     }
 
     public function updateUser(Request $request)

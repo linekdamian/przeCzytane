@@ -1,4 +1,4 @@
-@extends('admin.user-actions.users-blade')
+@extends('admin.user-actions.blade')
 
 @section('adminUserToDoContent')
 

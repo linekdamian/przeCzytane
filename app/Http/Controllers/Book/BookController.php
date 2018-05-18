@@ -32,7 +32,7 @@ class BookController extends Controller
     public function index()
     {
         $books = $this->getBooks();
-        return view('book.allBooks', compact('books'));
+        return view('book.all-books', compact('books'));
     }
 
     public function book($id)

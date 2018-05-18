@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
 
-        @include('layouts.userSidebar')
+        @include('layouts.profile-sidebar')
 
         <div class="mainUser">
 

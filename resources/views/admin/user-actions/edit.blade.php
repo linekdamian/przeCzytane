@@ -1,4 +1,4 @@
-@extends('admin.user-actions.users-blade')
+@extends('admin.user-actions.blade')
 
 @section('adminUserToDoContent')
 
@@ -29,21 +29,14 @@
                                     <span class="input-group-text bg-warning text-dark w-100" id="uname">Nick: </span>
                                 </div>
                                 <input name="name" type="text" class="text-center form-control"
-                                       value="{{ $user->name }}">
-
-                                @if ($errors->has('name'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
+                                       value="{{ $user->name }}" required autofocus>
                             </div>
-
                             <div class="input-group w-100 m-3">
                                 <div class="input-group-prepend w-25">
                                     <span class="input-group-text bg-warning text-dark w-100" id="email">E-mail: </span>
                                 </div>
                                 <input name="email" type="email" class="text-center form-control"
-                                       value="{{ $user->email }}">
+                                       value="{{ $user->email }}" required>
                             </div>
 
                             <div class="input-group w-100 m-3">

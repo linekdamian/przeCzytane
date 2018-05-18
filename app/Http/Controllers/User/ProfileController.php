@@ -108,7 +108,7 @@ class ProfileController extends Controller
 
     public function toRead($id){
         $user = $this->getUser($id);
-        return view('user.toRead', compact('user'));
+        return view('user.to-read', compact('user'));
     }
 
     public function friends($id)

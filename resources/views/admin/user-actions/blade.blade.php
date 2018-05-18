@@ -1,4 +1,4 @@
-@extends('admin.admin')
+@extends('admin.blade')
 
 @section('adminToDoContent')
     <div class="row">

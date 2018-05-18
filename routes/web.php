@@ -35,7 +35,6 @@ Route::post('/user', 'User\ProfileController@store')->name('addFriend');
 //Routing ADMIN -------------------------
 
 Route::get('/admin', 'Admin\AdminController@index')->name('admin');
-
 Route::get('/admin/users', 'Admin\UsersController@index')->name('admin-users');
 Route::post('/admin/delete', 'Admin\UsersController@delete')->name('admin-user-delete');
 Route::post('/admin/update-roles', 'Admin\UsersController@updateRoles')->name('admin-user-update-roles');
