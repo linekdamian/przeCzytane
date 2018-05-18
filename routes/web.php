@@ -36,6 +36,14 @@ Route::post('/user', 'User\ProfileController@store')->name('addFriend');
 
 Route::get('/admin', 'Admin\AdminController@index')->name('admin');
 
+Route::get('/admin/users', 'Admin\UsersController@index')->name('admin-users');
+Route::post('/admin/delete', 'Admin\UsersController@delete')->name('admin-user-delete');
+Route::post('/admin/update-roles', 'Admin\UsersController@updateRoles')->name('admin-user-update-roles');
+Route::get('/admin/user/edit', 'Admin\UsersController@editUser')->name('admin-edit-user');
+Route::patch('/admin/user/update', 'Admin\UsersController@updateUser')->name('admin-update-user');
+
+Route::get('/admin/books', 'Admin\BooksController@index')->name('books');
+
 //Routing BOOK -------------------------
 
 Route::get('/book', 'Book\BookController@index')->name('books');

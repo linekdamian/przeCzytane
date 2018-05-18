@@ -42,7 +42,7 @@
     </main>
 </section>
 
-<section class="bg-secondary">
+<section id="footer">
     @include('layouts.footer')
 </section>
 

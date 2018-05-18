@@ -32,5 +32,9 @@ class User extends Authenticatable
     public $primaryKey = 'name';
     public $incrementing = false;
 
+    public function roles()
+    {
+        return $this->hasOne('App\Roles','id','roles_id');
+    }
 
 }

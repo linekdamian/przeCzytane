@@ -1,3 +1,4 @@
+
 .py-4 {
     height: 100%;
     min-height: 90vh !important;
@@ -8,8 +9,6 @@ html, body {
     color: #636b6f;
     font-family: 'Raleway', sans-serif !important;
     font-weight: 100;
-    /*height: 100%;*/
-    /*min-height: 500px;*/
     margin: 0;
 }
 
@@ -26,4 +25,26 @@ body {
 
 #card {
     max-height: 300px;
+}
+
+/*Settings for admin*/
+/*
+/*Ustawienia dla adminów*/
+
+.box{
+    width: 100vw;
+    /*min-height: 30vh;*/
+    line-height: 30vh;
+}
+
+.white-space-normal{
+    white-space: normal;
+}
+
+.box:hover{
+    box-shadow: 10px 10px lightgray;
+}
+
+.box:hover .noshadow{
+    box-shadow: none!important;
 }

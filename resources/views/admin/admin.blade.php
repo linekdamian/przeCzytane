@@ -6,7 +6,9 @@
 
             <div class="row">
                 <div class="col">
-WITAJ ADMINIE
+                    <div class="display-4 justify-content-center">
+                        {{ __('Ustawienia') }}
+                    </div>
                 </div>
             </div>
 
