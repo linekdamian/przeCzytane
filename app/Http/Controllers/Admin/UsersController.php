@@ -12,19 +12,28 @@ use Illuminate\Support\Facades\Redirect;
 
 class UsersController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('admin');
     }
 
-    protected function findUser($id)
+    protected function getUser($id)
     {
         $user = User::find($id);
         if (!$user) {
             $user = User::where('email', $id)->first();
         }
         return $user;
+    }
+
+    protected function getUsers()
+    {
+        return User::all();
+    }
+
+    protected function getAdmins()
+    {
+        return User::where('roles_id', 1)->get();
     }
 
     protected function deleteUser(User $user)
@@ -69,7 +78,7 @@ class UsersController extends Controller
 
     public function delete(Request $request)
     {
-        $user = $this->findUser($request->username);
+        $user = $this->getUser($request->username);
         if (!$user) {
             return Redirect::back()->with('danger_message', 'Nie ma takiego użytkownika');
         } elseif ($user->roles_id == 1) {
@@ -83,7 +92,7 @@ class UsersController extends Controller
 
     public function updateRoles(Request $request)
     {
-        $user = $this->findUser($request->username);
+        $user = $this->getUser($request->username);
         if (!$user) {
             return Redirect::back()->with('danger_message', 'Nie ma takiego użytkownika');
         } elseif ($this->addRoles($user)) {
@@ -93,7 +102,7 @@ class UsersController extends Controller
 
     public function editUser(Request $request)
     {
-        $user = $this->findUser($request->username);
+        $user = $this->getUser($request->username);
         if (!$user) {
             return Redirect::back()->with('danger_message', 'Nie ma takiego użytkownika');
         } elseif ($user->roles_id == 1) {
@@ -103,7 +112,7 @@ class UsersController extends Controller
 
     public function updateUser(Request $request)
     {
-        $user = $this->findUser($request->realname);
+        $user = $this->getUser($request->realname);
 
         if ($user->name == $request->name && $user->email == $request->email){
             $this->validate(request(),[
@@ -139,5 +148,18 @@ class UsersController extends Controller
                 ->with('message', 'Konto zostało zaaktualizowane');
         }else return Redirect::action('Admin\UsersController@editUser')
             ->with('danger_message', 'Nieznany błąd');
+    }
+
+    public function listOfUsers()
+    {
+        $users = $this->getUsers();
+        return view('admin.user-actions.lists.users', compact('users'));
+    }
+
+    public function listOfAdmins()
+    {
+        $users = $this->getAdmins();
+//        dd($users);
+        return view('admin.user-actions.lists.users', compact('users'));
     }
 }

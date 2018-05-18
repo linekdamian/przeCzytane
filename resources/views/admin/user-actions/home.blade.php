@@ -92,19 +92,19 @@
 
     <div class="row">
         <div class="col-lg-4 mb-5">
-            <div class="box bg-warning text-dark btn btn-lg w-100 p-4">
+            <a href="{{ route('admin-list-users') }}" class="box bg-warning text-dark btn btn-lg w-100 p-4">
                 <div class="row justify-content-center h1 mb-3 white-space-normal">
                     {{ __('Lista użytkowników') }}
                 </div>
-            </div>
+            </a>
         </div>
 
         <div class="col-lg-4 mb-5">
-            <div class="box bg-dark text-white btn btn-lg w-100 p-4">
+            <a href="{{ route('admin-list-admins') }}" class="box bg-dark text-white btn btn-lg w-100 p-4">
                 <div class="row justify-content-center h1 text-light mb-3 white-space-normal">
                     {{ __('Lista adminów') }}
                 </div>
-            </div>
+            </a>
         </div>
 
         <div class="col-lg-4 mb-5">
