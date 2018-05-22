@@ -5,7 +5,7 @@
     <div class="row mt-5">
 
         <div class="col-lg-4 mb-5">
-            <a class="box bg-warning text-dark btn btn-lg w-100 h-100" href="{{ route('admin-users') }}">
+            <a class="box bg-warning text-dark btn btn-lg w-100 h-100" href="{{ route('admin-user') }}">
 
                 <div class="row justify-content-center display-4 mb-3">
                     {{ __('Użytkownicy') }}

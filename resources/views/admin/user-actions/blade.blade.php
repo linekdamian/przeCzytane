@@ -3,9 +3,9 @@
 @section('adminToDoContent')
     <div class="row">
         <div class="col-lg">
-            <div class="text-muted text-light h2">
-                Sekcja Użytkowników
-            </div>
+            <a class="text-muted h2" href="{{ route('admin-user') }}">
+                <span class="badge badge-light font-weight-light bg-white">{{__('Sekcja Użytkowników')}}</span>
+            </a>
         </div>
     </div>
 

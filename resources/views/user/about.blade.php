@@ -11,11 +11,11 @@
 
                     <a class="btn btn-dark btn-md" href=""
                        onclick="event.preventDefault();
-                                                     document.getElementById('addFriend-form').submit();">
+                                                     document.getElementById('add-friend-form').submit();">
                         {{ __('Dodaj do znajomych') }}
                     </a>
 
-                    <form id="addFriend-form" action="{{ route('addFriend') }}" method="POST"
+                    <form id="add-friend-form" action="{{ route('add-friend') }}" method="POST"
                           style="display: none;">
                         <input type="hidden" name="userName" value="{{ $user->name }}">
                         @csrf

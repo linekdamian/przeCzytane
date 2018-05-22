@@ -69,7 +69,7 @@
                 <div class="row">
                     <div class="col white-space-normal text-muted">
                         <div class="col noshadow">
-                            <form method="get" action="{{ route('admin-edit-user') }}" class="noshadow">
+                            <form method="get" action="{{ route('admin-user-edit') }}" class="noshadow">
                                 @csrf
                                 <div class="form-group noshadow">
                                     <label for="InputUsername"> {{ __('Znajdź użytkownika') }}</label>
@@ -110,7 +110,7 @@
         <div class="col-lg-4 mb-5">
             <div class="box bg-warning text-dark btn btn-lg w-100 p-4">
                 <div class="row justify-content-center h1 mb-3 white-space-normal">
-                    {{ __('KTOŚ') }}
+                    {{ __('STH') }}
                 </div>
             </div>
         </div>

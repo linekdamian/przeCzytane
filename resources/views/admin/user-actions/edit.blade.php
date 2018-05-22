@@ -20,7 +20,7 @@
                     </div>
 
                     <div class="col-lg-6 mb-3">
-                        <form action="{{ route('admin-update-user') }}" method="post">
+                        <form action="{{ route('admin-user-update') }}" method="post">
                             @csrf
                             @method('PATCH')
 
