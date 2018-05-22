@@ -16,7 +16,7 @@
                                 @csrf
                                 <div class="form-group noshadow">
                                     <label for="InputUsername"> {{ __('Znajdź użytkownika') }}</label>
-                                    <input type="text" name="username" id="InputUsername" class="text-center noshadow"
+                                    <input type="text" name="username" id="InputUsername" class="text-center noshadow form-control"
                                            placeholder="nick / email">
                                 </div>
 
@@ -45,7 +45,7 @@
                                 @csrf
                                 <div class="form-group noshadow">
                                     <label for="InputUsername"> {{ __('Znajdź użytkownika') }}</label>
-                                    <input type="text" name="username" id="InputUsername" class="text-center noshadow"
+                                    <input type="text" name="username" id="InputUsername" class="text-center noshadow form-control"
                                            placeholder="nick / email">
                                 </div>
 
@@ -73,7 +73,7 @@
                                 @csrf
                                 <div class="form-group noshadow">
                                     <label for="InputUsername"> {{ __('Znajdź użytkownika') }}</label>
-                                    <input type="text" name="username" id="InputUsername" class="text-center noshadow"
+                                    <input type="text" name="username" id="InputUsername" class="text-center noshadow form-control"
                                            placeholder="nick / email">
                                 </div>
 

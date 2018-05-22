@@ -12,7 +12,8 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
+    <script src="{{ asset('js/bootstrap/bootstrap.bundle.js') }}" defer></script>
+    <script src="{{ asset('js/bootstrap/bootstrap.js') }}" defer></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
@@ -20,12 +21,10 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/stylesheet.css') }}" rel="stylesheet">
-
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-          crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="{{ asset('css/bootstrap/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap/bootstrap-grid.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap/bootstrap-reboot.css') }}" rel="stylesheet">
 
     {{--Icons google--}}
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
