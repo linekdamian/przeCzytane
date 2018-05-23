@@ -13,14 +13,12 @@ class CreateAutorshipTable extends Migration
      */
     public function up()
     {
-//        Schema::create('autorship', function (Blueprint $table) {
-//            $table->integer('author_id')->unsigned();
-//            $table->bigInteger('book_id')->unsigned();
-//
-//
-//            $table->foreign('author_id')->references('id')->on('authors');
-//            $table->foreign('book_id')->references('isbn')->on('books');
-//        });
+        Schema::create('author_book', function (Blueprint $table) {
+            $table->integer('author_id')->unsigned();
+            $table->bigInteger('book_isbn')->unsigned();
+
+            $table->primary(['author_id', 'book_isbn']);
+        });
     }
 
     /**
@@ -30,6 +28,6 @@ class CreateAutorshipTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('autorship');
+        Schema::dropIfExists('author_book');
     }
 }

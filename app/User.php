@@ -34,7 +34,14 @@ class User extends Authenticatable
 
     public function roles()
     {
-        return $this->hasOne('App\Roles','id','roles_id');
+        return $this->belongsTo(Roles::class);
+    }
+
+    public function books()
+    {
+        return $this->belongsToMany(Book::class)
+            ->withPivot('rating', 'review', 'favourite')
+            ->withTimestamps();
     }
 
 }

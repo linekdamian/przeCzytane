@@ -24,3 +24,9 @@ $factory->define(App\Book::class, function (Faker $faker) {
     ];
 });
 
+$factory->define(App\Author::class, function (Faker $faker){
+    return [
+        'firstname' => $faker->firstName,
+        'lastname' => $faker->lastName,
+    ];
+});

@@ -17,18 +17,25 @@ class Book extends Model
     public $primaryKey = 'isbn';
     public $incrementing = false;
 
-    public function categories()
+    public function category()
     {
-        return $this->hasOne('App\Category');
+        return $this->belongsTo(Category::class);
     }
 
     public function publisher()
     {
-        return $this->hasOne('App\Publisher');
+        return $this->belongsTo(Publisher::class);
     }
 
     public function authors()
     {
-        return $this->belongsToMany('App\Author');
+        return $this->belongsToMany(Author::class);
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class)
+            ->withPivot('rating', 'review', 'favourite')
+            ->withTimestamps();
     }
 }

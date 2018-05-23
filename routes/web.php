@@ -34,17 +34,18 @@ Route::post('/user', 'User\ProfileController@store')->name('add-friend');
  * Section Users
  */
 Route::get('/admin', 'Admin\AdminController@index')->name('admin');
-Route::get('/admin/user', 'Admin\UsersController@index')->name('admin-user');
-Route::get('/admin/user/edit', 'Admin\UsersController@editUser')->name('admin-user-edit');
-Route::post('/admin/user/delete', 'Admin\UsersController@delete')->name('admin-user-delete');
-Route::post('/admin/user/update-roles', 'Admin\UsersController@updateRoles')->name('admin-user-update-roles');
-Route::patch('/admin/user/update', 'Admin\UsersController@updateUser')->name('admin-user-update');
-Route::get('/admin/user/list-of-users', 'Admin\UsersController@listOfUsers')->name('admin-list-users');
-Route::get('/admin/user/list-of-admins', 'Admin\UsersController@listOfAdmins')->name('admin-list-admins');
+Route::get('/admin/user', 'Admin\UserController@index')->name('admin-user');
+Route::get('/admin/user/edit', 'Admin\UserController@editUser')->name('admin-user-edit');
+Route::post('/admin/user/delete', 'Admin\UserController@delete')->name('admin-user-delete');
+Route::post('/admin/user/update-roles', 'Admin\UserController@updateRoles')->name('admin-user-update-roles');
+Route::patch('/admin/user/update', 'Admin\UserController@updateUser')->name('admin-user-update');
+Route::get('/admin/user/list-of-users', 'Admin\UserController@listOfUsers')->name('admin-list-users');
+Route::get('/admin/user/list-of-admins', 'Admin\UserController@listOfAdmins')->name('admin-list-admins');
 /*
  * Section Books
  */
-Route::get('/admin/books', 'Admin\BooksController@index')->name('books');
+Route::get('/admin/book', 'Admin\BookController@index')->name('admin-book');
+Route::get('/admin/book/add', 'Admin\Book\AddBookController@index')->name('admin-book-add');
 /*
  * Routing BOOK -------------------------
  */

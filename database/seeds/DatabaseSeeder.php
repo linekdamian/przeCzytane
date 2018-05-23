@@ -11,12 +11,27 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-//        $this->call(RolesTableSeeder::class);
+        $this->call(RolesTableSeeder::class);
         $this->call(UserTableSeeder::class);
 
-//        factory(App\User::class, 100)->create();
-//        factory(App\Category::class, 10)->create();
-//        factory(App\Publisher::class, 20)->create();
-//        factory(App\Book::class, 100)->create();
+        factory(App\Category::class, 10)->create();
+        factory(App\Publisher::class, 20)->create();
+        factory(App\Author::class, 30)->create();
+        factory(App\Book::class, 100)->create()->each(function ($book) {
+
+            $id_a = rand(1,30);
+            $book->authors()->attach($id_a);
+        });
+        factory(App\User::class, 100)->create()->each(function ($user){
+//            $id_b = rand(1,30);
+            $rating = rand(1,10);
+            $fav = rand(0,1);
+            $books = \App\Book::inRandomOrder()->first();
+
+
+            $user->books()->attach($books->isbn,[
+                'rating' => $rating,
+                'favourite' => $fav]);
+        });
     }
 }
