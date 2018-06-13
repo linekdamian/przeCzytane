@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Book;
 
+use App\Book;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -10,23 +11,12 @@ class BookController extends Controller
 {
     protected function getBooks()
     {
-        $books = DB::table('books')->get();
-        return $books;
+        return Book::all();
     }
 
     protected function getBook($id)
     {
-        $book = DB::table('books')
-            ->where('isbn', $id)
-            ->first();
-
-        if ($book == null)
-        {
-            abort(404, 'Sorry, that book doesnt exist in our database');
-        }
-        else{
-            return $book;
-        }
+        return Book::find($id);
     }
 
     public function index()
@@ -39,6 +29,5 @@ class BookController extends Controller
     {
         $book = $this->getBook($id);
         return view('book.book', compact('book'));
-
     }
 }

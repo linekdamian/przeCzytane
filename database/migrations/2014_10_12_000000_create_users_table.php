@@ -20,6 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('roles_id')->unsigned()->default(2);
             $table->text('description')->nullable();
+            $table->string('firstname')->nullable();
+            $table->string('lastname')->nullable();
             $table->rememberToken();
             $table->timestamps();
 

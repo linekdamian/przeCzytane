@@ -44,4 +44,13 @@ class User extends Authenticatable
             ->withTimestamps();
     }
 
+    public function getFriends()
+    {
+        return $friendship = DB::table('friends')
+            ->select('*')
+            ->where('nameSecond', Auth::user()->name)
+            ->orWhere('nameFirst', Auth::user()->name)
+            ->get();
+    }
+
 }

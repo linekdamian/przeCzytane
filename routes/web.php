@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', 'HomeController@index');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 /*
@@ -28,7 +26,10 @@ Route::get('/user/{id}/activity', 'User\ProfileController@activity')->name('acti
 Route::get('/user/{id}/ratings', 'User\ProfileController@ratings')->name('ratings');
 Route::get('/user/{id}/toRead', 'User\ProfileController@toRead')->name('to-read');
 Route::get('/user/{id}/friends', 'User\ProfileController@friends')->name('friends');
-Route::post('/user', 'User\ProfileController@store')->name('add-friend');
+Route::post('/user', 'User\AddFriendController@addFriend')->name('add-friend');
+Route::get('/user/{id}/edit', 'User\EditProfileController@index')->name('index-edit-profile');;
+Route::patch('/user/{id}/edit', 'User\EditProfileController@edit')->name('update-edit-profile');
+Route::delete('/user/{id}', 'User\EditProfileController@delete')->name('delete-profile');
 /*
  * Routing ADMIN -------------------------
  * Section Users
@@ -46,9 +47,23 @@ Route::get('/admin/user/list-of-admins', 'Admin\UserController@listOfAdmins')->n
  */
 Route::get('/admin/book', 'Admin\BookController@index')->name('admin-book');
 Route::get('/admin/book/add', 'Admin\Book\AddBookController@index')->name('admin-book-add');
+Route::get('/admin/book/category/add', 'Admin\Book\CategoryController@index')->name('admin-category');
+Route::post('/admin/book/category/add', 'Admin\Book\CategoryController@add')->name('admin-category-add');
+Route::get('/admin/book/category/edit', 'Admin\Book\CategoryController@edit')->name('admin-category-edit');
+Route::patch('/admin/book/category/edit', 'Admin\Book\CategoryController@update')->name('admin-category-update');
 /*
  * Routing BOOK -------------------------
  */
 Route::get('/book', 'Book\BookController@index')->name('books');
 Route::get('/book/{id}', 'Book\BookController@book')->name('book');
 Route::post('/search', 'Book\SearchController@search')->name('search');
+/*
+ * Routing Author
+ */
+Route::get('/author', 'Author\AuthorController@index')->name('author');
+Route::get('/author/{id}', 'Author\AuthorController@author')->name('author-id');
+/*
+ * Routing Category
+ */
+Route::get('/category', 'Category\CategoryController@index')->name('category');
+Route::get('/category/{id}', 'Category\CategoryController@category')->name('category-id');

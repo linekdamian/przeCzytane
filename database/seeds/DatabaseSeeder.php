@@ -23,7 +23,6 @@ class DatabaseSeeder extends Seeder
             $book->authors()->attach($id_a);
         });
         factory(App\User::class, 100)->create()->each(function ($user){
-//            $id_b = rand(1,30);
             $rating = rand(1,10);
             $fav = rand(0,1);
             $books = \App\Book::inRandomOrder()->first();

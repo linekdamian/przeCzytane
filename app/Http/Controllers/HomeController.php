@@ -14,9 +14,16 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    protected function getLastBook()
+    {
+        return Book::orderBy('created_at', 'desc')->first();;
+    }
+
     public function index()
     {
         $user = Auth::user();
-        return view('home', compact('user'));
+        $book = $this->getLastBook();
+        return view('home', compact(['user', 'book']));
     }
 }

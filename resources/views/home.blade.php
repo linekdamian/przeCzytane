@@ -2,21 +2,15 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
-            </div>
+    <div class="row">
+        <div class="jumbotron">
+            <h1 class="display-4">Nowość!</h1>
+            <h2>{{ $book->title }}</h2>
+            <p class="lead"> {{ $book->description }}</p>
+            <hr class="my-4">
+            <p class="lead">
+                <a class="btn btn-primary btn-lg" href="{{ route('book', ['id' => $book->isbn]) }}" role="button">Sprawdź</a>
+            </p>
         </div>
     </div>
 </div>

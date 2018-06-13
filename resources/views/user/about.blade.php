@@ -6,25 +6,7 @@
             <div class="col">
                 Na przeCzytane od: {{ date('d-m-Y', strtotime($user->created_at)) }}
             </div>
-            @if($friendship)
-                <div class="col">
-
-                    <a class="btn btn-dark btn-md" href=""
-                       onclick="event.preventDefault();
-                                                     document.getElementById('add-friend-form').submit();">
-                        {{ __('Dodaj do znajomych') }}
-                    </a>
-
-                    <form id="add-friend-form" action="{{ route('add-friend') }}" method="POST"
-                          style="display: none;">
-                        <input type="hidden" name="userName" value="{{ $user->name }}">
-                        @csrf
-                    </form>
-                </div>
-            @endif
         </div>
-
-
         <div class="row">
             @if(Auth::user()->name == $user->name)
             <div class="col">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AddFriendController extends Controller
 {
@@ -14,9 +15,10 @@ class AddFriendController extends Controller
         $this->middleware('auth');
     }
 
-    public function addFriend(Request $request)
+    public static function addFriend(Request $request)
     {
-//        DB:table('friends')->insert(['nameFirst' => Auth::user()->name, 'nameSecond' => $id]);
+        $id = $request[trim('userName')];
+        DB::table('friends')->insert(['nameFirst' => Auth::user()->name, 'nameSecond' => $id]);
         return redirect()->back();
     }
 }
