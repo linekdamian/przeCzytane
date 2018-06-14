@@ -1,10 +1,32 @@
 @extends('user.user')
 
 @section('userProfileContent')
-    Najbliższe dni nie przyniosą dobrych wiadomości (i to nie tylko pogodowych). Oprócz deszczowych frontów rozlegających się nad całym krajem, w powietrzu odnotujemy wysokie stężenie niebezpiecznej dla życia substancji. Jak poradzić sobie z tą anomalią? Wystarczy pobrać na urządzenie mobilne ulubione seriale z Netflix, które pomogą przetrwać końcówkę majówki, a następnie zabunkrować się w bezpiecznym miejscu.
+    <div class="pb-5 p-3">
+        <div class="row mt-5">
+            <div class="col">
+                <div class="row display-4">
+                    Aktywność
+                </div>
 
-    "The Rain"
+                <div class="row mt-4">
+                    @foreach($user->books as $book)
+                        <?php $author = $book->authors ?>
+                            <div class="jumbotron jumbotron-fluid w-100">
+                                <div class="container">
+                                    <h1 class="display-4">{{ $book->title }}</h1>
+                                    <p class="lead">{{'Recenzja: '.$book->pivot->review}}</p>
+                                    <p class="lead">{{'Ocena: '.$book->pivot->rating}}</p>
+                                    <div class="justify-content-center text-center">
+                                        <a href="{{ route('book', ['id'=> $book->isbn]) }}"
+                                           class="btn btn-outline-dark">Przjedź</a>
+                                    </div>
+                                </div>
+                            </div>
+                    @endforeach
+                </div>
+            </div>
 
-    Znany nam świat to już przeszłość. Sześć lat po tym, jak w wyniku epidemii wywołanej morderczym wirusem przenoszonym przez deszcz umiera niemal cała populacja Skandynawii, duńskie rodzeństwo opuszcza bezpieczny bunkier i odkrywa straszliwą prawdę o losach ludzkości. Wkrótce potem brat i siostra dołączają do grupy innych młodych ocalałych. Razem wyruszają w niebezpieczną podróż przez opustoszałą Skandynawię w poszukiwaniu śladów życia.
+        </div>
 
+    </div>
 @endsection
