@@ -2,11 +2,9 @@
 
 @section('content')
     <div class="container">
-{{--<div class="display-1">--}}
-    {{--{{ $id['search'] }}--}}
-{{--</div>--}}
         <div class="row h-100">
             @foreach($books as $book)
+                <?php $authors = $book->authors ?>
                 <div id="card" class="col-lg-3 float-left mb-3">
                     <div class="card text-center border-warning">
                         <div class="card-header bg-dark text-white border-warning">
@@ -15,8 +13,9 @@
                         </div>
                         <div class="card-body">
                             <div class="card-subtitle mb-2 text-muted">
-{{--                                {{ $book-> }}--}}
-                                Tutaj będą autorzy
+                                @foreach($authors as $author)
+                                {{ $author->firstname.' '.$author->lastname }}
+                                @endforeach
                             </div>
 
                             <div class="card-text text-truncate mb-2">

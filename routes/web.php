@@ -47,6 +47,7 @@ Route::get('/admin/user/list-of-admins', 'Admin\UserController@listOfAdmins')->n
  */
 Route::get('/admin/book', 'Admin\BookController@index')->name('admin-book');
 Route::get('/admin/book/add', 'Admin\Book\AddBookController@index')->name('admin-book-add');
+Route::post('/admin/book/add', 'Admin\Book\AddBookController@index')->name('admin-book-add-form');
 Route::get('/admin/book/category/add', 'Admin\Book\CategoryController@index')->name('admin-category');
 Route::post('/admin/book/category/add', 'Admin\Book\CategoryController@add')->name('admin-category-add');
 Route::get('/admin/book/category/edit', 'Admin\Book\CategoryController@edit')->name('admin-category-edit');
