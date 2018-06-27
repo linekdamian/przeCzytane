@@ -47,11 +47,15 @@ Route::get('/admin/user/list-of-admins', 'Admin\UserController@listOfAdmins')->n
  */
 Route::get('/admin/book', 'Admin\BookController@index')->name('admin-book');
 Route::get('/admin/book/add', 'Admin\Book\AddBookController@index')->name('admin-book-add');
-Route::post('/admin/book/add', 'Admin\Book\AddBookController@index')->name('admin-book-add-form');
+Route::post('/admin/book/add', 'Admin\Book\AddBookController@store')->name('admin-book-store');
 Route::get('/admin/book/category/add', 'Admin\Book\CategoryController@index')->name('admin-category');
 Route::post('/admin/book/category/add', 'Admin\Book\CategoryController@add')->name('admin-category-add');
 Route::get('/admin/book/category/edit', 'Admin\Book\CategoryController@edit')->name('admin-category-edit');
 Route::patch('/admin/book/category/edit', 'Admin\Book\CategoryController@update')->name('admin-category-update');
+Route::get('/admin/book/author/add', 'Admin\Book\AuthorController@index')->name('admin-author');
+Route::post('/admin/book/author/add', 'Admin\Book\AuthorController@add')->name('admin-author-add');
+Route::get('/admin/book/author/edit', 'Admin\Book\AuthorController@edit')->name('admin-author-edit');
+Route::put('/admin/book/author/edit', 'Admin\Book\AuthorController@update')->name('admin-author-update');
 /*
  * Routing BOOK -------------------------
  */

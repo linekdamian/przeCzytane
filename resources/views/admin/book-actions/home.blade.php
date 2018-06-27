@@ -25,11 +25,11 @@
                 </div>
             </a>
 
-            <div class="box bg-dark btn btn-lg w-100 p-4 mt-3">
+            <a class="box bg-dark btn btn-lg w-100 p-4 mt-3" href="{{ route('admin-author') }}">
                 <div class="row text-white justify-content-center h1 mb-3 white-space-normal">
                     {{ __('Dodaj Autora') }}
                 </div>
-            </div>
+            </a>
         </div>
 
         <div class="col-lg-4 mb-5">
@@ -70,12 +70,14 @@
                 <div class="row">
                     <div class="col white-space-normal text-muted">
                         <div class="col noshadow">
-                            <form method="post" action="#" class="noshadow">
+                            <form method="get" action="{{ route('admin-author-edit') }}" class="noshadow">
                                 @csrf
                                 <div class="form-group noshadow">
                                     <label for="InputUsername"> {{ __('Znajdź autora') }}</label>
-                                    <input type="text" name="username" id="InputUsername" class="text-center noshadow form-control"
-                                           placeholder="imię / nazwisko">
+                                    <input type="text" name="firstname" id="firstname" class="text-center noshadow form-control"
+                                           placeholder="imię">
+                                    <input type="text" name="lastname" id="lastname" class="text-center noshadow form-control mt-2"
+                                           placeholder="nazwisko">
                                 </div>
 
                                 <div class="form-group">
