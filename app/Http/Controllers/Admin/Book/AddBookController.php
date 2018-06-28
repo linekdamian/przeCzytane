@@ -64,10 +64,12 @@ class AddBookController extends Controller
         $book = new Book();
         $book->title = $request->title;
         $book->isbn = $request->isbn;
-        if (isset($request->description))
-        {
+        if($request->description){
+            dd('dupa');
             $book->description = $request->description;
         }
+//        dd('dupcia');
+
         $book->publisher_id = $this->getPublisherIdByName($request->publisher);
         $book->category_id = $this->getCategoryIdByName($request->category);
 

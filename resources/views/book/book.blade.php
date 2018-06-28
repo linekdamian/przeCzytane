@@ -34,19 +34,28 @@
                                         @csrf
 
                                         <input type="hidden" name="isbn" value="{{ $book->isbn }}">
-                                        @for($i=1;$i<11;$i++)
-                                            @if($favorite->pivot->rating >= $i)
-                                                <button type="submit" name="rating" value="{{$i}}"
-                                                        class="btn p-0 btn-sm material-icons text-danger bg-warning float-left">
-                                                    star
-                                                </button>
-                                            @else
+                                        @if($book->users()->where('user_name', '=', Auth::user()->name)->exists())
+                                            @for($i=1;$i<11;$i++)
+                                                @if($favorite->pivot->rating >= $i)
+                                                    <button type="submit" name="rating" value="{{$i}}"
+                                                            class="btn p-0 btn-sm material-icons text-danger bg-warning float-left">
+                                                        star
+                                                    </button>
+                                                @else
+                                                    <button type="submit" name="rating" value="{{$i}}"
+                                                            class="btn p-0 btn-sm material-icons text-dark bg-warning float-left">
+                                                        star_border
+                                                    </button>
+                                                @endif
+                                            @endfor
+                                        @else
+                                            @for($i=1;$i<11;$i++)
                                                 <button type="submit" name="rating" value="{{$i}}"
                                                         class="btn p-0 btn-sm material-icons text-dark bg-warning float-left">
                                                     star_border
                                                 </button>
-                                            @endif
-                                        @endfor
+                                            @endfor
+                                        @endif
                                     </form>
                                     <form action="{{ route('addBookToFavorite') }}" method="post">
                                         @csrf
@@ -85,32 +94,34 @@
                                     </form>
                             </div>
                             @auth()
-                            <form action="{{ route('setBookReview') }}" method="post">
-                                @csrf
+                                <form action="{{ route('setBookReview') }}" method="post">
+                                    @csrf
 
-                                <input type="hidden" name="isbn" value="{{ $book->isbn }}">
+                                    <input type="hidden" name="isbn" value="{{ $book->isbn }}">
+                                    <div class="row mt-3">
+                                        <div class="col">
+                                        <textarea class="form-control mb-3 bg-light text-dark shadow"
+                                                  id="ratingTextarea"
+                                                  name="review">{{ $favorite->pivot->review }}</textarea>
+                                            <button type="submit"
+                                                    class="btn btn-outline-dark nav-link m-auto btn-block">
+                                                Recenzuj
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            @elseguest
                                 <div class="row mt-3">
                                     <div class="col">
-                                        <textarea class="form-control mb-3 bg-light text-dark shadow"
-                                                  id="ratingTextarea" name="review">{{ $favorite->pivot->review }}</textarea>
-                                        <button type="submit" class="btn btn-outline-dark nav-link m-auto btn-block">
-                                            Recenzuj
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                            @elseguest
-                            <div class="row mt-3">
-                                <div class="col">
-                                    <form action="">
+                                        <form action="">
                                         <textarea class="form-control mb-3 bg-light text-dark shadow"
                                                   id="ratingTextarea"></textarea>
-                                    </form>
-                                    <div class="btn btn-outline-dark nav-link m-auto">
-                                        Recenzuj
+                                        </form>
+                                        <div class="btn btn-outline-dark nav-link m-auto">
+                                            Recenzuj
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                             @endauth
                             <div class="row mt-3">
                                 <div class="col">

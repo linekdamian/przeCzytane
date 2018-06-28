@@ -30,8 +30,12 @@ class BookController extends Controller
     public function book($id)
     {
         $book = $this->getBook($id);
-        if (Auth::user()) {
-            $favorite = Auth::user()->books()->wherePivot('book_isbn', '=', $book->isbn)->firstOrFail();
+
+        if (Auth::user() && Auth::user()->books()->where('book_isbn', '=', $book->isbn)->exists()) {
+            $favorite = Auth::user()->books()->wherePivot('book_isbn', '=', $book->isbn)->first();
+        } elseif (Auth::user()) {
+            Auth::user()->books()->save($book);
+            $favorite = Auth::user()->books()->wherePivot('book_isbn', '=', $book->isbn)->first();
         }
         return view('book.book', compact(['book', 'favorite']));
     }
@@ -77,7 +81,6 @@ class BookController extends Controller
     {
         $book = $this->getBook($request->isbn);
         $fav = Auth::user();
-//dd($request);
         if ($fav->books()->where('book_isbn', '=', $book->isbn)->exists()) {
             $fav->books()->updateExistingPivot($book->isbn, ['review' => $request->review]);
         } else {
