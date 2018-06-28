@@ -30,7 +30,7 @@
                 <div class="row mt-4">
                     @foreach($user->books as $book)
                         <?php $author = $book->authors ?>
-                        @if($book->pivot->favourite == 1)
+                        @if($book->pivot->favorite == 1)
                             <div id="card" class="col-lg-3 float-left mb-3">
                                 <div class="card text-center border-warning">
                                     <div class="card-header bg-dark text-white border-warning">

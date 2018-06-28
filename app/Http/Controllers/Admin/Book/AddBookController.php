@@ -64,7 +64,10 @@ class AddBookController extends Controller
         $book = new Book();
         $book->title = $request->title;
         $book->isbn = $request->isbn;
-        $book->description = $request->description;
+        if (isset($request->description))
+        {
+            $book->description = $request->description;
+        }
         $book->publisher_id = $this->getPublisherIdByName($request->publisher);
         $book->category_id = $this->getCategoryIdByName($request->category);
 

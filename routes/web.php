@@ -62,6 +62,9 @@ Route::put('/admin/book/author/edit', 'Admin\Book\AuthorController@update')->nam
 Route::get('/book', 'Book\BookController@index')->name('books');
 Route::get('/book/{id}', 'Book\BookController@book')->name('book');
 Route::post('/search', 'Book\SearchController@search')->name('search');
+Route::post('/addFav', 'Book\BookController@changeFavorite')->name('addBookToFavorite');
+Route::post('/setRating', 'Book\BookController@setRating')->name('setBookRating');
+Route::post('/setReview', 'Book\BookController@setReview')->name('setBookReview');
 /*
  * Routing Author
  */

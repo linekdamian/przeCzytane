@@ -19,7 +19,7 @@ class CreateUserBookTable extends Migration
 
             $table->integer('rating')->nullable();
             $table->text('review')->nullable();
-            $table->boolean('favourite')->nullable();
+            $table->boolean('favorite')->nullable();
             $table->timestamps();
 
             $table->primary(['user_name', 'book_isbn']);
