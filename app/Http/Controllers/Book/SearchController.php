@@ -18,12 +18,16 @@ class SearchController extends Controller
 
     protected function findAuthor($author)
     {
-//        return Author::where
+        $splitName = explode(' ', $author);
+
+            return Author::where('firstname', 'like', '%'.$splitName[0].'%')
+                ->orWhere('lastname', 'like', '%'.$splitName[1].'%')->groupBy('id')->get();
+
     }
 
     protected function findIsbn($isbn)
     {
-        return Book::where('isbn', '=', $isbn)->first();
+        return Book::where('isbn', '=', $isbn)->get();
     }
 
     public function search(Request $request)
@@ -32,6 +36,9 @@ class SearchController extends Controller
         $title = $this->findTitle($id);
         $isbn = $this->findIsbn($id);
         $books = $title->union($isbn);
-        return view('book.search', compact(['books']));
+
+        $searchingAuthors = $this->findAuthor($id);
+        return view('book.search', compact(['books', 'searchingAuthors']));
+
     }
 }

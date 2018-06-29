@@ -65,10 +65,8 @@ class AddBookController extends Controller
         $book->title = $request->title;
         $book->isbn = $request->isbn;
         if($request->description){
-            dd('dupa');
             $book->description = $request->description;
         }
-//        dd('dupcia');
 
         $book->publisher_id = $this->getPublisherIdByName($request->publisher);
         $book->category_id = $this->getCategoryIdByName($request->category);
@@ -78,6 +76,6 @@ class AddBookController extends Controller
                 $request->authorlastname), $book->isbn);
 
         $book->save();
-        return view('book.book', compact('book'));
+        return back();
     }
 }

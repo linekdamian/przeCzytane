@@ -47,7 +47,9 @@ class ProfileController extends Controller
     public function activity($id)
     {
         $user = $this->getUser($id);
-        return view('user.activity', compact('user'));
+
+        $books = $user->books()->orderBy('pivot_updated_at', 'desc')->get();
+        return view('user.activity', compact(['user', 'books']));
     }
 
     public function ratings($id)
