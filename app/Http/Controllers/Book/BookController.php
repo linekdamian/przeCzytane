@@ -70,7 +70,12 @@ class BookController extends Controller
         $fav = Auth::user();
 
         if ($fav->books()->where('book_isbn', '=', $book->isbn)->exists()) {
-            $fav->books()->updateExistingPivot($book->isbn, ['rating' => $request->rating]);
+
+            if($fav->books()->where('book_isbn', '=', $request->isbn)->first()->pivot->rating == $request->rating){
+                $fav->books()->updateExistingPivot($book->isbn, ['rating' => 0]);
+            }else{
+                $fav->books()->updateExistingPivot($book->isbn, ['rating' => $request->rating]);
+            }
         } else {
             $fav->books()->save($book, ['rating' => $request->rating]);
         }

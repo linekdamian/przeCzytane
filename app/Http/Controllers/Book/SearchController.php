@@ -19,10 +19,12 @@ class SearchController extends Controller
     protected function findAuthor($author)
     {
         $splitName = explode(' ', $author);
-
-            return Author::where('firstname', 'like', '%'.$splitName[0].'%')
-                ->orWhere('lastname', 'like', '%'.$splitName[1].'%')->groupBy('id')->get();
-
+            foreach ($splitName as $split){
+                $author = Author::where('firstname', 'like', '%'.$split.'%')
+                    ->orWhere('lastname', 'like', '%'.$split.'%')->groupBy('id')->get();
+                    $authors = collect($author);
+            }
+        return $authors;
     }
 
     protected function findIsbn($isbn)
