@@ -14,7 +14,7 @@
                         <div class="card-body">
                             <div class="card-subtitle mb-2 text-muted">
                                 @foreach($authors as $author)
-                                {{ $author->firstname.' '.$author->lastname }}
+                                    {{ $author->firstname.' '.$author->lastname }}
                                 @endforeach
                             </div>
 
@@ -22,7 +22,8 @@
                                 {{ $book->description }}
                             </div>
                             <div class="justify-content-center">
-                                <a href="{{ route('book', ['id'=> $book->isbn]) }}" class="btn btn-outline-warning text-dark">Przjedź</a>
+                                <a href="{{ route('book', ['id'=> $book->isbn]) }}"
+                                   class="btn btn-outline-warning text-dark">Przjedź</a>
                             </div>
                         </div>
                     </div>
@@ -40,13 +41,24 @@
                 @foreach($searchingAuthors as $author)
                     <div class="col-lg-3 mt-2 mr-3">
                         <div class="row h2 font-weight-light">
-                            <a href="{{ route('author-id', ['id' => $author->id]) }}" class="col text-center list-group-item list-group-item-action list-group-item-warning">
+                            <a href="{{ route('author-id', ['id' => $author->id]) }}"
+                               class="col text-center list-group-item list-group-item-action list-group-item-warning">
                                 {{ $author->firstname.' '.$author->lastname }}
                             </a>
                         </div>
                     </div>
                 @endforeach
             </div>
+        @else
+            @if($books->isEmpty())
+                <div class="row display-3 mt-5">
+                    <div class="col mt-5">
+                        Nie ma wyników do wyświetlenia. <span class="text-muted">Spróbuj ponownie.</span>
+                    </div>
+                </div>
+            @endif
         @endif
+
+
     </div>
 @endsection

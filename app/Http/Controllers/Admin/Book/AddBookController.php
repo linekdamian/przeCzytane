@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Publisher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 
 class AddBookController extends Controller
 {
@@ -46,10 +47,26 @@ class AddBookController extends Controller
         return $author->id;
     }
 
+    private function updateAuthorByName($imie, $nazwisko)
+    {
+        return Author::where('firstname','=', $imie)
+            ->where('lastname', '=', $nazwisko)->first();
+    }
+
 
     private function fillAuthorBookTable($author_id, $isbn)
     {
         DB::table('author_book')->insert(['author_id' => $author_id, 'book_isbn' => $isbn]);
+    }
+
+    private function getBookByTitle($title)
+    {
+        return Book::where('title', '=', $title)->first();
+    }
+
+    private function getBookByIsbn($isbn)
+    {
+        return Book::where('isbn', '=', $isbn)->first();
     }
 
     public function index()
@@ -76,6 +93,40 @@ class AddBookController extends Controller
                 $request->authorlastname), $book->isbn);
 
         $book->save();
+        return back();
+    }
+
+    public function edit()
+    {
+        $publishers = $this->getPublishers();
+        $categories = $this->getCategories();
+        ($this->getBookByTitle(Input::get('isbn')))? $book = $this->getBookByTitle(Input::get('isbn')):
+            $book = $this->getBookByIsbn(Input::get('isbn'));
+
+        if($book) {
+            return view('admin.book-actions.edit-book', compact(['publishers', 'categories', 'book']));
+        }else return back()->with('msg', 'Nie ma takiej ksiażki');
+    }
+
+    public function update(Request $request)
+    {
+        $book = Book::find($request->isbn);
+        ($book)?: $book = new Book(); //TO DO delete starej książki
+
+        $book->title = $request->title;
+        $book->isbn = $request->isbn;
+        $book->description = $request->description;
+
+        $book->publisher_id = $this->getPublisherIdByName($request->publisher);
+        $book->category_id = $this->getCategoryIdByName($request->category);
+        $book->save();
+
+        $author = $this->updateAuthorByName($request->authorfirstname, $request->authorlastname);
+
+        $author->firstname = $request->authorfirstname;
+        $author->lastname = $request->authorlastname;
+        $author->save();
+
         return back();
     }
 }

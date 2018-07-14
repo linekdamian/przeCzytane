@@ -41,11 +41,11 @@
                 <div class="row">
                     <div class="col white-space-normal text-muted">
                         <div class="col noshadow">
-                            <form method="post" action="#" class="noshadow">
+                            <form method="get" action="{{route('admin-book-edit')}}" class="noshadow">
                                 @csrf
                                 <div class="form-group noshadow">
-                                    <label for="InputUsername"> {{ __('Znajdź książkę') }}</label>
-                                    <input type="text" name="username" id="InputUsername" class="text-center noshadow form-control"
+                                    <label for="InputId"> {{ __('Znajdź książkę') }}</label>
+                                    <input type="text" name="isbn" id="InputIsbn" class="text-center noshadow form-control"
                                            placeholder="tytuł / isbn">
                                 </div>
 

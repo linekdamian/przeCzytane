@@ -85,7 +85,7 @@
                                    href="{{ route('friends', ['id'=> Auth::user()->name]) }}">Znajomi</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" href="{{ url('#') }}">Biblioteka</a>
+                                <a class="nav-link text-dark" href="{{ route('ratings', ['id'=>Auth::user()->name]) }}">Biblioteka</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle text-dark" href="#"

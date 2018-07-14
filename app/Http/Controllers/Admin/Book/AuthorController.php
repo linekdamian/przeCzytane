@@ -53,10 +53,8 @@ class AuthorController extends Controller
     public function edit(Request $request)
     {
         $authors = $this->getAuthors();
-//        if ($author->contains('firstname', Input::get('firstname'))&&$author->contains('lastname', Input::get('lastname')))
         if ($author = $this->getAuthor(Input::get('firstname'), Input::get('lastname')))
         {
-//            $category = $this->getAuthor(Input::get('firstname'), Input::get('lastname'));
             return view('admin.book-actions.author-edit', compact(['author', 'authors']));
         }
         else return back();
