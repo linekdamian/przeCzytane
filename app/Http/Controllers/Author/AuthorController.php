@@ -14,20 +14,15 @@ class AuthorController extends Controller
         return Author::all();
     }
 
-    private function getAuthor($id)
-    {
-        return Author::where('id', '=', $id)->first();
-    }
-
     public function index()
     {
         $authors = $this->getAuthors();
-        return view('Author.home', compact('authors'));
+        return view('author.authors', compact('authors'));
     }
 
-    public function author($id)
+    public function show(Author $author)
     {
-        $author = $this->getAuthor($id);
-        return view('Author.author', compact('author'));
+        $author = $author->findOrFail($author->id);
+        return view('author.author', compact('author'));
     }
 }

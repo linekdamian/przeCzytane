@@ -13,20 +13,15 @@ class CategoryController extends Controller
         return Category::all();
     }
 
-    private function getCategory($id)
-    {
-        return Category::where('name', '=', $id)->first();
-    }
-
     public function index()
     {
         $categories = $this->getCategories();
-        return view('category.home', compact('categories'));
+        return view('category.categories', compact('categories'));
     }
 
-    public function category($id)
+    public function show(Category $category)
     {
-        $category = $this->getCategory($id);
+        $category = $category->findOrFail($category->id);
         return view('category.category', compact('category'));
     }
 }

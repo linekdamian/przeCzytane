@@ -40,7 +40,7 @@ class SearchController extends Controller
         $books = $title->union($isbn);
 
         $searchingAuthors = $this->findAuthor($id);
-        return view('book.search', compact(['books', 'searchingAuthors']));
+        return view('books.search', compact(['books', 'searchingAuthors']));
 
     }
 }

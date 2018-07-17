@@ -8,7 +8,7 @@
             </a>
         </div>
         <div class="col-auto float-left">
-            <a class="display-4 justify-content-center" href="{{ route('admin-book') }}">
+            <a class="display-4 justify-content-center" href="{{ route('books') }}">
                 <div class="badge badge-light font-weight-light bg-white text-muted h2">
                     {{__('Sekcja Książek')}}
                 </div>
@@ -32,7 +32,7 @@
                     </div>
 
                     <div class="col-lg-6 mb-3">
-                        {{--{{ route('admin-book-add-form') }}--}}
+                        {{--{{ route('admin-books-add-form') }}--}}
                         <form action="{{ route('admin-book-store') }}" method="post">
                             @csrf
                             <div class="input-group w-100 m-3">

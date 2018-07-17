@@ -9,7 +9,7 @@
             </a>
         </div>
         <div class="col-auto float-left">
-            <a class="display-4 justify-content-center" href="{{ route('admin-book') }}">
+            <a class="display-4 justify-content-center" href="{{ route('books') }}">
                 <div class="badge badge-light font-weight-light bg-white text-muted h2">
                     {{__('Sekcja Książek')}}
                 </div>
@@ -19,7 +19,7 @@
 
     <div class="row mt-5">
         <div class="col-lg-4 mb-5">
-            <a class="box bg-warning btn btn-lg w-100 p-4 mb-3 noshadow" href="{{ route('admin-book-add') }}">
+            <a class="box bg-warning btn btn-lg w-100 p-4 mb-3 noshadow" href="{{ route('books') }}">
                 <div class="row justify-content-center h1 text-dark mb-3 white-space-normal noshadow">
                     {{ __('Dodaj Książkę') }}
                 </div>

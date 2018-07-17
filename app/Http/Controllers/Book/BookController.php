@@ -24,7 +24,7 @@ class BookController extends Controller
     public function index()
     {
         $books = $this->getBooks();
-        return view('book.all-books', compact('books'));
+        return view('books.books', compact('books'));
     }
 
     public function book($id)
@@ -37,7 +37,7 @@ class BookController extends Controller
             Auth::user()->books()->save($book);
             $favorite = Auth::user()->books()->wherePivot('book_isbn', '=', $book->isbn)->first();
         }
-        return view('book.book', compact(['book', 'favorite']));
+        return view('books.book', compact(['book', 'favorite']));
     }
 
     private function getBookUserTables()

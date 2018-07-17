@@ -8,7 +8,7 @@
             </a>
         </div>
         <div class="col-auto float-left">
-            <a class="display-4 justify-content-center" href="{{ route('admin-book') }}">
+            <a class="display-4 justify-content-center" href="{{ route('books') }}">
                 <div class="badge badge-light font-weight-light bg-white text-muted h2">
                     {{__('Sekcja Książek')}}
                 </div>

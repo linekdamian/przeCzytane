@@ -1,3 +1,27 @@
+.logo{
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+.display-4{
+    font-family: 'Oswald', sans-serif !important;
+}
+
+.display-3{
+    font-family: 'Oswald', sans-serif !important;
+}
+
+.title{
+    font-family: 'Oswald', sans-serif !important;
+}
+
+.navbar{
+    font-family: 'Oswald', sans-serif !important;
+}
+
+.user-icon{
+    max-width: 24px;
+}
 
 .py-4 {
     height: 100%;
@@ -7,8 +31,8 @@
 html, body {
     background-color: #fff;
     color: #636b6f;
-    font-family: 'Raleway', sans-serif !important;
-    font-weight: 100;
+    font-family: 'Roboto', sans-serif !important;
+    font-weight: lighter;
     margin: 0;
 }
 
@@ -24,9 +48,13 @@ body {
 }
 
 #card {
-    max-height: 300px;
+    max-height: 400px;
 }
 
+.card-text {
+    max-height: 145px;
+    overflow: hidden;
+}
 /*Settings for admin*/
 /*
 /*Ustawienia dla adminów*/
@@ -47,4 +75,8 @@ body {
 
 .box:hover .noshadow{
     box-shadow: none!important;
+}
+
+.material-icons.md-18{
+    font-size: 18px;
 }
