@@ -1,11 +1,14 @@
 @extends('layouts.app')
-
+@section('supporting.navbar')
+    @include('user.partials.header')
+@endsection
 @section('content')
-    <div class="container">
 
-        @include('layouts.profile-sidebar')
+    <div class="container mt-3">
 
-        <div class="mainUser">
+        {{--@include('layouts.profile-sidebar')--}}
+
+        <div class="">
 
             <div class="row">
                 <div class="col">

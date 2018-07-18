@@ -5,8 +5,8 @@
 
 <section class="bg-dark sticky-top">
     @include('layouts.header')
+    @yield('supporting.navbar')
 </section>
-
 <section>
     <main class="py-4 h-100">
         @yield('content')

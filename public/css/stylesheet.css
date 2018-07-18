@@ -3,6 +3,11 @@
     color: inherit !important;
 }
 
+.guestrating{
+    background: url("/images/guestrating.png") no-repeat center !important;
+    height: 365px;
+}
+
 .display-4{
     font-family: 'Oswald', sans-serif !important;
 }

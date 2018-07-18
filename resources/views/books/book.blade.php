@@ -3,6 +3,7 @@
     @php $collection = collect([1 => 'light', 2 => 'dark', 3 => 'secondary', 4 => 'dark', 5 => 'secondary']);@endphp
     <div class="container">
         @include('books.partials.top')
+        <hr class="my-4">
         <div class="row mt-3">
             @include('books.partials.description')
             @include('books.partials.ratingform')
