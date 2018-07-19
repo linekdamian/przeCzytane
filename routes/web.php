@@ -37,7 +37,11 @@ Route::get('/authors/{author}', 'Author\AuthorController@show')->name('author');
 Route::get('/categories', 'Category\CategoryController@index')->name('categories');
 Route::get('/categories/{category}', 'Category\CategoryController@show')->name('category');
 
+/*
+ * Routing User ********************************************************************************************************
+ */
 
+Route::post('/user/{id}/upload', 'User\UploadPhotoController@store')->name('upload.photo');
 
 
 /*
@@ -63,7 +67,7 @@ Route::get('/user/{id}/ratings', 'User\ProfileController@ratings')->name('rating
 Route::get('/user/{id}/toRead', 'User\ProfileController@toRead')->name('to-read');
 Route::get('/user/{id}/friends', 'User\ProfileController@friends')->name('friends');
 Route::post('/user', 'User\AddFriendController@addFriend')->name('add-friend');
-Route::get('/user/{id}/edit', 'User\EditProfileController@index')->name('index-edit-profile');;
+Route::get('/user/{id}/edit', 'User\EditProfileController@index')->name('index-edit-profile');
 Route::patch('/user/{id}/edit', 'User\EditProfileController@edit')->name('update-edit-profile');
 Route::delete('/user/{id}', 'User\EditProfileController@delete')->name('delete-profile');
 /*

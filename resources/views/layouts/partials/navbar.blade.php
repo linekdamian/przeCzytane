@@ -26,7 +26,7 @@
             <a class="nav-link text-dark dropdown-toggle-split" role="button" href="#"
                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <img src="{{URL::asset('/images/icon.jpg')}}"
-                     class="rounded-circle user-icon">
+                     class="rounded-circle user-icon md-24">
             </a>
 
             <div class=" dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
