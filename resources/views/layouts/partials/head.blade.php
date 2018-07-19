@@ -18,7 +18,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ asset('js/bootstrap/bootstrap.min.js') }}" defer></script>
+{{--    <script src="{{ asset('js/bootstrap/bootstrap.min.js') }}" defer></script>--}}
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     {{--<link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">--}}
@@ -31,7 +31,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/stylesheet.css') }}" rel="stylesheet">
     <!-- Bootstrap CSS -->
-    <link href="{{ asset('css/bootstrap/bootstrap.min.css') }}" rel="stylesheet">
+{{--    <link href="{{ asset('css/bootstrap/bootstrap.min.css') }}" rel="stylesheet">--}}
 
     {{--Icons google--}}
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
