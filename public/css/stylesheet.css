@@ -4,7 +4,7 @@
 }
 
 .guestrating{
-    background: url("/images/guestrating.png") no-repeat center !important;
+    background: url("/images/layout/guestrating.png") no-repeat center !important;
     height: 365px;
 }
 
@@ -25,12 +25,18 @@
 }
 
 .user-icon{
-    /*background: url("/public/images/admin.jpg");*/
-    /*border-radius: 50%;*/
+
+}
+.btn{
+    font-family: 'Oswald', sans-serif !important;
 }
 
 .user-icon.md-24{
     max-width: 24px;
+}
+
+.user-icon.md-36{
+    max-width: 36px;
 }
 
 .user-icon.md-48{
@@ -39,7 +45,10 @@
 
 .user-icon.md-98{
     max-width: 98px;
-    max-height: 98px;
+}
+
+.user-icon.md-160{
+    max-width: 160px;
 }
 
 .py-4 {

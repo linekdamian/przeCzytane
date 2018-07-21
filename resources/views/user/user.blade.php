@@ -9,8 +9,7 @@
             <div class="col">
                 <div class="row float-left">
                     <div class="col">
-                        <img src="{{URL::asset('/images/icon.jpg')}}"
-                             class="rounded-circle user-icon md-98">
+                        @include('user.partials.img.large')
                     </div>
                     <div class="col ml-5">
                         <div class="row">

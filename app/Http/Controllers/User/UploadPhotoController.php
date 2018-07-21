@@ -15,16 +15,13 @@ class UploadPhotoController extends Controller
             'fileToUpload' => 'required|file|max:1024',
         ]);
 
-        $image =$request->fileToUpload;
+        $image = $request->fileToUpload;
         $fileName = Auth::user()->name.'.'.request()->fileToUpload->getClientOriginalExtension();
-//        @imagecropauto($image, IMG_CROP_DEFAULT);
-//        if ($crop !== false) { // in case a new image resource was returned
-//            imagedestroy($image);    // we destroy the original image
-//            $image = $crop;       // and assign the cropped image to $im
-//        }
-        Image::make($image->getRealPath())->resize(200,200)->save('images/'.$fileName);
 
-//        $image->move(public_path('/images'),$fileName);
+        Auth::user()->image = 'images/user/'.$fileName;
+        Auth::user()->save();
+
+        Image::make($image->getRealPath())->resize(200,200)->save(Auth::user()->image);
         return back()
             ->with('success','You have successfully upload image.');
     }
