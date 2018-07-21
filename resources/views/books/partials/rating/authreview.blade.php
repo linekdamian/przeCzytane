@@ -6,7 +6,7 @@
             <textarea class="form-control mb-3 bg-light text-dark shadow" id="ratingTextarea"
                       name="review">{{ $favorite->pivot->review }}</textarea>
             <button type="submit"
-                    class="btn btn-dark nav-link m-auto btn-block title">
+                    class="btn btn-warning nav-link m-auto btn-block">
                 {{_('REVIEW')}}
             </button>
         </div>

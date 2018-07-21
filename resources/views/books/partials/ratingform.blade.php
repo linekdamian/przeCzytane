@@ -10,11 +10,11 @@
             @include('books.partials.rating.authreview')
             <hr class="my-4">
             <div class="row mt-3 text-center">
-                <div class="btn btn-outline-dark m-auto material-icons" data-toggle="tooltip" data-placement="bottom"
+                <div class="btn btn-outline-warning m-auto material-icons" data-toggle="tooltip" data-placement="bottom"
                      title="ADD TO WATCHLIST">
                     library_add
                 </div>
-                <div class="btn btn-outline-dark m-auto material-icons" data-toggle="tooltip" data-placement="bottom"
+                <div class="btn btn-outline-warning m-auto material-icons" data-toggle="tooltip" data-placement="bottom"
                      title="NOT INTERESTED">
                     not_interested
                 </div>
@@ -26,14 +26,6 @@
                 If you want to rate books, please <span class="btn btn-dark title">SIGN IN</span> or
                 <span class="btn btn-dark title">SIGN UP</span>
             </div>
-            {{--<div class="row justify-content-between mx-auto p-lg-3">--}}
-                {{--<div class="btn btn-dark align-middle title">--}}
-                    {{--SIGN IN--}}
-                {{--</div>--}}
-                {{--<div class="btn btn-dark align-middle title">--}}
-                    {{--SIGN UP--}}
-                {{--</div>--}}
-            {{--</div>--}}
         </div>
     @endauth
 </div>

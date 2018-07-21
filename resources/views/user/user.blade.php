@@ -49,7 +49,7 @@
             @if(Auth::user()->name == $user->name)
                 <div class="col">
                     <a class="btn btn-outline-warning btn-md float-right"
-                       href="{{ route('index-edit-profile', ['id' => Auth::user()->name]) }}">
+                       href="{{ route('user.profile.settings', ['id' => Auth::user()->name]) }}">
                         {{ __('Edytuj profil') }}
                     </a>
                 </div>

@@ -1,6 +1,7 @@
 
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700|Oswald:300,400");
 
 // Variables
 //@import "variables";
@@ -19,4 +20,14 @@ $theme-colors: (
         light: $light,
 );
 
+body{
+  $font-family: 'Lato', sans-serif;
+}
+//.btn{
+//  $font-family: 'Oswald', sans-serif;
+//}
+//.navbar{
+//
+//  $font-family: 'Oswald', sans-serif;
+//}
 @import '~bootstrap/scss/bootstrap';

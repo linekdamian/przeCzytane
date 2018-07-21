@@ -18,7 +18,7 @@
         <div class="row text-center justify-content-center">
             <div class="col-lg-6">
 
-                <form action="{{ route('upload.photo', ['id'=>Auth::user()->name]) }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('user.upload.photo', ['id'=>Auth::user()->name]) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <input type="file" class="form-control-file" name="fileToUpload" id="exampleInputFile" aria-describedby="fileHelp">

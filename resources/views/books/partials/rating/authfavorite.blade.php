@@ -4,12 +4,12 @@
     @if($book->users()->where('user_name', '=', Auth::user()->name)->exists())
         @if($favorite->pivot->favorite == 1)
             <button type="submit"
-                    class="btn p-0 material-icons ml-3 text-light bg-secondary">
+                    class="btn p-0 material-icons ml-3 text-warning bg-secondary">
                 favorite
             </button>
         @elseif($favorite->pivot->favorite == 0)
             <button type="submit"
-                    class="btn p-0 material-icons ml-3 text-light bg-secondary">
+                    class="btn p-0 material-icons ml-3 text-warning bg-secondary">
                 favorite_border
             </button>
         @endif

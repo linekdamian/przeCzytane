@@ -23,7 +23,7 @@ class EditProfileController extends Controller
     {
         $user = $this->getUser();
         if (Auth::user()->name == $id){
-            return view('user.edit-profile', compact('user'));
+            return view('user.settings', compact('user'));
         }else return redirect()->back();
     }
 
