@@ -19,6 +19,7 @@ class CreateBooksTable extends Migration
             $table->integer('publisher_id')->unsigned();
             $table->integer('category_id')->unsigned();
             $table->text('description');
+            $table->string('image')->default('images/book/default/bookicon.png');
             $table->timestamps();
 
             $table->foreign('publisher_id')->references('id')->on('publishers');

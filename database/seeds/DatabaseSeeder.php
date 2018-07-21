@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
 
             $user->books()->attach($books->isbn,[
                 'rating' => $rating,
-                'favourite' => $fav]);
+                'favorite' => $fav]);
         });
     }
 }
