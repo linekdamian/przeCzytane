@@ -41,8 +41,16 @@ Route::get('/categories/{category}', 'Category\CategoryController@show')->name('
  * Routing User ********************************************************************************************************
  */
 
-Route::post('/user/{id}/upload', 'User\UploadPhotoController@store')->name('user.upload.photo');
-Route::get('/user/{id}/settings', 'User\EditProfileController@index')->name('user.profile.settings');
+//Route::get('/user/{user}', 'User\ProfileController@about')->name('user.about');
+//Route::get('/user/{user}/activity', 'User\ProfileController@activity')->name('user.activity');
+//Route::get('/user/{user}/ratings', 'User\ProfileController@ratings')->name('user.ratings');
+
+Route::get('/user/{user}/settings', 'User\SettingsController@index')->name('user.settings.index');
+Route::post('/user/{user}/upload', 'User\UploadPhotoController@store')->name('user.upload.photo');
+Route::put('/user/{user}/settings/update', 'User\SettingsController@update')->name('user.settings.update');
+Route::delete('/user/{user}/settings/update', 'User\SettingsController@delete')->name('user.settings.delete');
+Route::put('/user/{user}/settings/changepassword', 'User\SettingsController@changepassword')
+    ->name('user.settings.changepassword');
 
 
 /*
@@ -61,16 +69,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/users', 'User\ProfileController@index')->name('users');
 /*
  * user profile actions
- */
+*/
 Route::get('/user/{id}/about', 'User\ProfileController@about')->name('about');
 Route::get('/user/{id}/activity', 'User\ProfileController@activity')->name('activity');
 Route::get('/user/{id}/ratings', 'User\ProfileController@ratings')->name('ratings');
 Route::get('/user/{id}/toRead', 'User\ProfileController@toRead')->name('to-read');
 Route::get('/user/{id}/friends', 'User\ProfileController@friends')->name('friends');
 Route::post('/user', 'User\AddFriendController@addFriend')->name('add-friend');
-//Route::get('/user/{id}/edit', 'User\EditProfileController@index')->name('index-edit-profile');
-Route::patch('/user/{id}/edit', 'User\EditProfileController@edit')->name('update-edit-profile');
-Route::delete('/user/{id}', 'User\EditProfileController@delete')->name('delete-profile');
 /*
  * Routing ADMIN -------------------------
  * Section Users
@@ -108,13 +113,3 @@ Route::post('/search', 'Book\SearchController@search')->name('search');
 Route::post('/addFav', 'Book\BookController@changeFavorite')->name('addBookToFavorite');
 Route::post('/setRating', 'Book\BookController@setRating')->name('setBookRating');
 Route::post('/setReview', 'Book\BookController@setReview')->name('setBookReview');
-/*
- * Routing author
- */
-//Route::get('/author', 'Author\AuthorController@index')->name('author');
-//Route::get('/author/{id}', 'Author\AuthorController@author')->name('author-id');
-/*
- * Routing Category
- */
-//Route::get('/category', 'Category\CategoryController@index')->name('category');
-//Route::get('/category/{id}', 'Category\CategoryController@category')->name('category-id');

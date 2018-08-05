@@ -11,7 +11,12 @@
             </div>
             <div class="col">
                 <div class="float-left">
-                    <a href="#" class="btn btn-warning text-uppercase">{{__('messages.button.submit')}}</a>
+                    <form action="{{ route('user.settings.delete', Auth::user()) }}" method="post">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="btn btn-warning text-uppercase">{{__('messages.button.submit')}}
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>

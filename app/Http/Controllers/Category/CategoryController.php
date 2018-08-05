@@ -21,7 +21,6 @@ class CategoryController extends Controller
 
     public function show(Category $category)
     {
-        $category = $category->findOrFail($category->id);
         return view('category.category', compact('category'));
     }
 }

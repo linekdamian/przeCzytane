@@ -22,7 +22,6 @@ class AuthorController extends Controller
 
     public function show(Author $author)
     {
-        $author = $author->findOrFail($author->id);
         return view('author.author', compact('author'));
     }
 }
